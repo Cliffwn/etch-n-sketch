@@ -1,10 +1,13 @@
 const containerDiv = document.getElementsByClassName("container");
 const etchBox = document.querySelector(".etchBox");
+const slider = document.getElementById("gridSlider");
 
-const gridNumber = 16;
-const sliderValue = document.getElementById("gridSlider").value;
+console.log(slider.value);
+console.log(containerDiv);
 
-console.log(sliderValue);
+function makeGray() {
+    this.style.backgroundColor = "gray";
+}
 
 function etchBoxSize(gridSizeFromSlider) {
     etchBox.setAttribute('style',
@@ -14,8 +17,10 @@ function etchBoxSize(gridSizeFromSlider) {
     for (let i = 0; i < (gridSizeFromSlider ** 2); i++) {
         let singleGridDiv = document.createElement("div");
         singleGridDiv.setAttribute("class", "singleGridDiv");
+        singleGridDiv.addEventListener("mouseover", makeGray)
         etchBox.appendChild(singleGridDiv);
     };
 };
 
-etchBoxSize(sliderValue);
+etchBoxSize(slider.value);
+// slider.addEventListener("onchange", etchBoxSize(slider.value));
